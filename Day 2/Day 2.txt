@@ -1,0 +1,57 @@
+Session 2:
+***********
+OutLine :-
+************
+---------------------------------------------------
+SQL Server:
+************
+Server : 196.221.145.204
+Login:		DEPI02NET
+Password:	Depi@2025
+---------------------------------------------------
+
+Introducing ERD Entity Relationship Diagram (ERD)
+	Attributes
+	Entity TYPES
+	Relationships
+Database Constraints:
+Primary Key Constraints:
+    Not Null. 
+    Unique.
+Not Null. (Enforces the field to have a value).
+Unique Key. (All values in the column are different).
+Check Constraints. (Check constraints on a salary column Minimum 1000, Max 2000).
+
+
+Hands-on Practice
+
+Create DB for e-commerce platform with these tables:
+Customer table that contain (id, name, email, phone)
+Order table that contain (id, customer_id)
+Order_details that contain (id, order_id, product_id, quantity)
+Product table that contain (id, name, description)
+
+Understanding Joins
+
+
+Introducing T-SQL
+Understanding Sets
+Understanding Predicate Logic
+Understanding the Logical Order of Operations in SELECT Statements
+
+Elements of the SELECT Statement
+
+Sorting Data
+Filtering Data with Predicates
+Filtering Data with TOP and OFFSET-FETCH
+Working with Unknown Values
+
+Session 2: 
+Intermediate Query Writing and Data Manipulation
+Exploring SQL Server data types and their usage
+Writing Data Manipulation Language (DML) statements for inserting, updating, and deleting data
+Utilizing built-in functions in queries
+Aggregating data using GROUP BY and aggregate functions
+Crafting subqueries for complex data retrieval
+
+

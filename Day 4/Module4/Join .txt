@@ -1,0 +1,21 @@
+Join 
+1- inner join 
+2- Outer join
+    - left 
+    - right
+    - Full
+3 cross join 
+4- self join 
+
+
+7- filter (Top() , Offset - Fetch)
+2- String function
+3- Date time Function 
+
+
+
+
+
+
+
+

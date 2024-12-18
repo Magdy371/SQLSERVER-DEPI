@@ -1,0 +1,154 @@
+Create database test 
+go 
+use Test 
+go 
+
+create table t1 (CustomerName Nvarchar(10),
+                 ProductName nvarchar(10),
+				 Price decimal(9,2));
+
+insert into t1 values ('Ahmed','TShirt',200),
+('yasser','TShirt',100),('Ahmed','Shoes',300),
+('yasser','Latop',4000),('Ahmed','PC',3200),
+('aya','TShirt',300),('aya','latop',5200)
+
+select * from t1
+
+select customerName ,Tshirt , Latop,PC,shoes
+from (select customerName,ProductName,price from t1) as BaseData
+pivot
+(
+sum(price) for productname in([Tshirt] , [Latop],[PC],[shoes]) 
+)as piv
+
+
+
+insert into t1 values('Ahmed','Note Book',300) ,
+('Ahmed','Shoes',200),('yasser','Books',100)
+
+
+
+--------------------------------------------
+--to Create Dynamic Pivat 
+--1)select Range 
+select * from t1
+
+select distinct productName from t1
+
+select distinct productName  into products 
+from t1
+
+select * from products
+
+select QUOTENAME(productName )+ ',' from products
+
+--2)Create variables From Names 
+declare @ProductsCol Nvarchar(max) = '';
+select @ProductsCol += QUOTENAME(productName )+ ',' from products
+print @productsCol
+
+--3) to Remove the last ,
+declare @ProductsCol Nvarchar(max) = '';
+select @ProductsCol += QUOTENAME(productName )+ ',' from products
+set @ProductsCol = left (@ProductsCol ,len(@ProductsCol)-1);
+print @productsCol
+
+--4) Sort in Code 
+declare @ProductsCol Nvarchar(max) = '';
+select @ProductsCol += QUOTENAME(productName )+ ',' from products
+set @ProductsCol = left (@ProductsCol ,len(@ProductsCol)-1);
+print @productsCol
+
+select customerName ,@ProductsCol
+from (select customerName,ProductName,price from t1) as BaseData
+pivot
+(
+sum(price) for productname in( @productsCol) 
+)as piv
+
+--OOPS Can not Pass Parameter in (range) 
+--5) Use Execute SQL 
+declare @ProductsCol Nvarchar(max) = '';
+declare @SQL Nvarchar(max)=''
+select @ProductsCol += QUOTENAME(productName )+ ',' from products
+set @ProductsCol = left (@ProductsCol ,len(@ProductsCol)-1);
+--print @productsCol
+
+set @SQL=
+'select customerName ,'+@ProductsCol+'
+from (select customerName,ProductName,price from t1) as BaseData
+pivot
+(
+sum(price) for productname in('+ @productsCol+') 
+)as piv'
+
+print @SQL 
+
+--6)-- Execute 
+declare @ProductsCol Nvarchar(max) = '';
+declare @SQL Nvarchar(max)=''
+select @ProductsCol += QUOTENAME(productName )+ ',' from products
+set @ProductsCol = left (@ProductsCol ,len(@ProductsCol)-1);
+--print @productsCol
+
+set @SQL=
+'select customerName ,'+@ProductsCol+'
+from (select customerName,ProductName,price from t1) as BaseData
+pivot
+(
+sum(price) for productname in('+ @productsCol+') 
+)as piv'
+
+--print @SQL
+Execute sp_executesql @SQL 
+
+
+--7)-- Execute 
+declare @x nvarchar(30) = 'y';
+declare @ProductsCol Nvarchar(max) = '';
+declare @SQL Nvarchar(max)=''
+select @ProductsCol += QUOTENAME(productName )+ ',' from products
+set @ProductsCol = left (@ProductsCol ,len(@ProductsCol)-1);
+--print @productsCol
+
+set @SQL=
+'select customerName ,'+@ProductsCol+'
+from (select customerName,ProductName,price from t1) as BaseData
+pivot
+(
+sum(price) for productname in('+ @productsCol+') 
+)as piv where customerName like '''+@x+'%'''
+
+--print @SQL
+Execute sp_executesql @SQL
+
+-------------------------------------------------------------------------------------------------------
+--8
+go
+alter proc myfun2
+@y nvarchar (max) out 
+as 
+begin 
+		declare @ProductsCol Nvarchar(max) = '';
+		declare @SQL Nvarchar(max)=''
+		select @ProductsCol += QUOTENAME(productName )+ ',' from products
+		set @ProductsCol = left (@ProductsCol ,len(@ProductsCol)-1);
+		--print @productsCol
+
+		set @y=
+		'select customerName ,'+@ProductsCol+'
+		from (select customerName,ProductName,price from t1) as BaseData
+		pivot
+		(
+		sum(price) for productname in('+ @productsCol+') 
+		)as piv'
+
+   --return @SQL
+ end 
+
+declare @x nvarchar (max) = '';
+exec myfun2 @x out 
+--select  @x
+ --call
+ exec sp_executesql @x
+ 

@@ -1,0 +1,35 @@
+Session 1:
+
+https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
+https://www.youtube.com/watch?v=oVuWamsEDVI&list=PLot6Fiu8YUhazxspcmbSXnG4GhbvqW58N&index=2
+
+https://chat.whatsapp.com/FxRSIEBv8XzIIrQj1bG2fK
+
+
+OutLine :-
+************
+Foundational Skills in SQL Server 2016 and T-SQL
+Overview of SQL Server 2016 capabilities and components
+Introduction to T-SQL, sets, and predicate logic
+Writing basic single-table SELECT statements
+Understanding the fundamentals of data retrieval and filtering
+
+T-SQL 
+PL-SQL
+
+Restore Database 
+   Query 
+Create database
+---------------------------------------------------
+SQL Server:
+************
+Server : 196.221.145.204
+Login:		DEPI02NET
+Password:	Depi@2025
+---------------------------------------------------
+--TASK Day 1
+--Get All Rows in Employees Table With 
+--(FirstName , LastName ,FirstName +' '+ LastName As FullName,
+--Add FullAddress)
+--FullAddress With format  {Country City , Address}
+--Result with 4 Columns 

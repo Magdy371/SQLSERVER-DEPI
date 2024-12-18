@@ -1,0 +1,5 @@
+--Types of Relationships
+
+--a. One-One Relationship (1-1 Relationship)
+--b. One-Many Relationship (1-M Relationship)
+--c. Many-Many Relationship (M-M Relationship)

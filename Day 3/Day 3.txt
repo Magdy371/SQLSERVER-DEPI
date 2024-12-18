@@ -1,0 +1,32 @@
+Session 3:
+***********
+OutLine :-
+************
+---------------------------------------------------
+SQL Server:
+************
+Server : 196.221.145.204
+Login:		DEPI02NET
+Password:	Depi@2025
+---------------------------------------------------
+On hand Lab 
+************
+
+Module 6 
+
+Writing Data Manipulation Language (DML) statements for inserting, updating, and deleting data
+
+Normalization 
+
+Writing Simple SELECT Statements
+Eliminating Duplicates with DISTINCT
+Using Column and Table Aliases
+Writing Simple CASE Expressions
+
+Sorting Data
+Filtering Data with Predicates
+Working with Unknown Values
+
+
+
+
